@@ -1,0 +1,36 @@
+﻿<Window x:Class="Pokedex.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pokedex"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+    <Grid>
+        <StackPanel>
+            <Label x:Name="LabelEn" Content="AAA"/>
+            <Button x:Name="showLangButton" Click="showLangButton_Click" Content="Show"/>
+            <DataGrid x:Name="TrainerDG" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            
+
+        </StackPanel>
+            <Image Name="Dados" Source="/Resources/132.png" Height="200" >
+
+            </Image>
+        <Rectangle Width="200" Height="200" Opacity="1" >
+            <Rectangle.Fill>
+                Black
+            </Rectangle.Fill>
+            <Rectangle.OpacityMask>
+                <VisualBrush Visual="{Binding ElementName=Dados}"/>
+            </Rectangle.OpacityMask>
+        </Rectangle>
+    </Grid>
+</Window>
