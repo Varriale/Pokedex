@@ -8,29 +8,6 @@
         Title="MainWindow" Height="450" Width="800">
     
     <Grid>
-        <StackPanel>
-            <Label x:Name="LabelEn" Content="AAA"/>
-            <Button x:Name="showLangButton" Click="showLangButton_Click" Content="Show"/>
-            <DataGrid x:Name="TrainerDG" AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                    <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-            
-
-        </StackPanel>
-            <Image Name="Dados" Source="/Resources/132.png" Height="200" >
-
-            </Image>
-        <Rectangle Width="200" Height="200" Opacity="1" >
-            <Rectangle.Fill>
-                Black
-            </Rectangle.Fill>
-            <Rectangle.OpacityMask>
-                <VisualBrush Visual="{Binding ElementName=Dados}"/>
-            </Rectangle.OpacityMask>
-        </Rectangle>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Content="oi"/>
     </Grid>
 </Window>

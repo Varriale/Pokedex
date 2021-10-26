@@ -11,6 +11,8 @@ using Pokedex.Services;
 using Pokedex.Entities;
 using Microsoft.EntityFrameworkCore;
 using Pokedex.ViewModels;
+using Pokedex.Views;
+using System.Windows.Controls;
 
 namespace Pokedex
 {
@@ -19,27 +21,43 @@ namespace Pokedex
     /// </summary>
     public partial class App : Application
     {
-        private ServiceProvider serviceProvider;
+        public IServiceProvider serviceProvider;
+        public Trainer CurrentTrainer { get; private set; }
         public App()
         {
             ServiceCollection services = new ServiceCollection();
             ConfigureServices(services);
             serviceProvider = services.BuildServiceProvider();
         }
-        private void ConfigureServices(ServiceCollection services)
+        private void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DatabaseContext>(options =>
             {
                 options.UseSqlite("data source=Pokedex.db");
             });
             services.AddSingleton<MainWindow>();
+            services.AddScoped<TestView>();
+            services.AddScoped<HomeView>();
+            services.AddScoped<TrainerSelection>();
+            services.AddScoped<NewTrainerView>();
             services.AddScoped<IPokeAPIClient, PokeAPIClient>();
         }
         private void OnStartup(object sender, StartupEventArgs e)
         {
             var mainWindow = serviceProvider.GetService<MainWindow>();
-            mainWindow.DataContext = new MainViewModel();
+            mainWindow.MainFrame.Content = serviceProvider.GetService<TrainerSelection>();
             mainWindow.Show();
+        }
+        public void NavigateTo<T>()
+        {
+            var mainWindow = serviceProvider.GetService<MainWindow>();
+            mainWindow.MainFrame.Navigate(serviceProvider.GetService<T>());
+            mainWindow.Show();
+        }
+
+        public void SetTrainer(Trainer trainer)
+        {
+            CurrentTrainer = trainer;
         }
     }
 }

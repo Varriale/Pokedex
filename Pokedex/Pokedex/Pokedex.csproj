@@ -9,6 +9,11 @@
   <ItemGroup>
     <None Remove="Resources\132.png" />
     <None Remove="Resources\die.png" />
+    <None Remove="Resources\Spr_FRLG_Leaf.png" />
+    <None Remove="Resources\Spr_FRLG_Leaf.webp" />
+    <None Remove="Resources\Spr_FRLG_Oak.png" />
+    <None Remove="Resources\Spr_FRLG_Red.png" />
+    <None Remove="Resources\Spr_FRLG_Red.webp" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +26,9 @@
   <ItemGroup>
     <Resource Include="Resources\132.png" />
     <Resource Include="Resources\die.png" />
+    <Resource Include="Resources\Spr_FRLG_Leaf.png" />
+    <Resource Include="Resources\Spr_FRLG_Oak.png" />
+    <Resource Include="Resources\Spr_FRLG_Red.png" />
   </ItemGroup>
 
 </Project>

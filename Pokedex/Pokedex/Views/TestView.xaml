@@ -1,0 +1,42 @@
+﻿<Page x:Class="Pokedex.Views.TestView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Pokedex.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TestView">
+
+    <Grid>
+        <StackPanel>
+            <Label x:Name="LabelEn" Content="AAA"/>
+            <Button x:Name="showLangButton" Click="showLangButton_Click" Content="Show"/>
+            <DataGrid x:Name="TrainerDG" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Content="testPage" Width="100" Height="100" HorizontalAlignment="Left" Click="HomePageClick" />
+
+
+            <TextBlock x:Name="TrainerNameTxt" Text="Oi"/>
+        </StackPanel>
+        <Image Name="Dados" Source="/Resources/132.png" Height="200" >
+
+        </Image>
+        <Rectangle Width="200" Height="200" Opacity="1" >
+            <Rectangle.Fill>
+                Black
+            </Rectangle.Fill>
+            <Rectangle.OpacityMask>
+                <VisualBrush Visual="{Binding ElementName=Dados}"/>
+            </Rectangle.OpacityMask>
+        </Rectangle>
+
+
+
+    </Grid>
+</Page>

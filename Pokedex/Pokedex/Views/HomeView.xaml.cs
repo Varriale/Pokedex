@@ -1,6 +1,5 @@
 ﻿using Pokedex.Entities;
 using Pokedex.Services;
-using Pokedex.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,17 +15,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Pokedex
+namespace Pokedex.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interação lógica para HomeView.xam
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class HomeView : Page
     {
-        public MainWindow()
+        public HomeView()
         {
             InitializeComponent();
-            //((App)Application.Current).NavigateTo<HomeView>();
+        }
+
+        private void TestPageClick(object sender, RoutedEventArgs e)
+        {
+            ((App)Application.Current).NavigateTo<TestView>();
+            //IServiceProvider SP = ((App)Application.Current).serviceProvider;
+            //TestView tv = new TestView(SP.GetService(IPokeAPIClient), SP.GetService(DatabaseContext));
         }
     }
 }
