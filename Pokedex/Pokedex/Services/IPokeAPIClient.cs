@@ -6,5 +6,6 @@ namespace Pokedex.Services
     public interface IPokeAPIClient
     {
         Task<T> FetchResource<T>(NamedAPIResource<T> namedAPIResource);
+        Task<PaginatedResource<T>> FetchPaginatedResource<T>(string url);
     }
 }

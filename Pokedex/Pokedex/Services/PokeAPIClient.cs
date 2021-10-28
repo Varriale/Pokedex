@@ -21,6 +21,17 @@ namespace Pokedex.Services
             return resource;
         }
 
+        public async Task<PaginatedResource<T>> FetchPaginatedResource<T>(string url)
+        {
+            PaginatedResource<T> resource = default(PaginatedResource<T>);
+            HttpResponseMessage response = await client.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                resource = await response.Content.ReadAsAsync<PaginatedResource<T>>();
+            }
+            return resource;
+        }
+
         //Add the GetPokemon/SearchPokemon/GetPage ou coisa assim
 
     }

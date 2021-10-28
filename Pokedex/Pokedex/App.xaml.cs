@@ -40,6 +40,7 @@ namespace Pokedex
             services.AddScoped<HomeView>();
             services.AddScoped<TrainerSelection>();
             services.AddScoped<NewTrainerView>();
+            services.AddScoped<ViewsDependancy>();
             services.AddScoped<IPokeAPIClient, PokeAPIClient>();
         }
         private void OnStartup(object sender, StartupEventArgs e)
@@ -48,10 +49,10 @@ namespace Pokedex
             mainWindow.MainFrame.Content = serviceProvider.GetService<TrainerSelection>();
             mainWindow.Show();
         }
-        public void NavigateTo<T>()
+        public void NavigateTo<T>(Func<ViewsDependancy,T> del) where T:Page
         {
             var mainWindow = serviceProvider.GetService<MainWindow>();
-            mainWindow.MainFrame.Navigate(serviceProvider.GetService<T>());
+            mainWindow.MainFrame.Navigate(del(serviceProvider.GetService<ViewsDependancy>()));
             mainWindow.Show();
         }
 

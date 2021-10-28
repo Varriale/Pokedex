@@ -1,6 +1,4 @@
-﻿using Pokedex.Entities;
-using Pokedex.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,18 +16,19 @@ using System.Windows.Shapes;
 namespace Pokedex.Views
 {
     /// <summary>
-    /// Interação lógica para HomeView.xam
+    /// Interação lógica para Menu.xam
     /// </summary>
-    public partial class HomeView : Page
+    public partial class Menu : Page
     {
-        public HomeView(ViewsDependancy dependency)
+        public Menu(ViewsDependancy dependency)
         {
             InitializeComponent();
         }
 
-        private void TestPageClick(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).NavigateTo(l => new TestView(l));
+
+            ((App)Application.Current).NavigateTo(l => new NationalPokedex(l));
         }
     }
 }

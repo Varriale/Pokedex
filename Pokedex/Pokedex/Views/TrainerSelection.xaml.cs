@@ -24,10 +24,10 @@ namespace Pokedex.Views
     {
         private DatabaseContext dbContext;
 
-        public TrainerSelection(DatabaseContext dbContext)
+        public TrainerSelection(ViewsDependancy dependency)
         {
             InitializeComponent();
-            this.dbContext = dbContext;
+            dbContext = dependency.dbContext;
             GetTrainers();
         }
 
@@ -113,13 +113,13 @@ namespace Pokedex.Views
         {
             Trainer t = (Trainer)((Button)sender).Tag;
             ((App)Application.Current).SetTrainer(t);
-            ((App)Application.Current).NavigateTo<TestView>();
+            ((App)Application.Current).NavigateTo(l => new Menu(l));
 
         }
 
         private void NewTrainerClicked(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).NavigateTo<NewTrainerView>();
+            ((App)Application.Current).NavigateTo(l => new NewTrainerView(l));
 
         }
     }

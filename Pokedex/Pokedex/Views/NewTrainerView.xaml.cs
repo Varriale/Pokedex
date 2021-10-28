@@ -21,10 +21,12 @@ namespace Pokedex.Views
     /// </summary>
     public partial class NewTrainerView : Page
     {
-        Gender trainerGender;
-        public NewTrainerView()
+        private Gender trainerGender;
+        private DatabaseContext dbContext;
+        public NewTrainerView(ViewsDependancy dependency)
         {
             InitializeComponent();
+            dbContext = dependency.dbContext;
         }
 
         private void Rectangle_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -44,7 +46,7 @@ namespace Pokedex.Views
         }
         private void GirlBtn_Click(object sender, RoutedEventArgs e)
         {
-            trainerGender = Gender.Boy;
+            trainerGender = Gender.Girl;
             BoyBtn.Visibility = Visibility.Collapsed;
             CollapseGenerics();
         }
@@ -60,7 +62,22 @@ namespace Pokedex.Views
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).NavigateTo<TrainerSelection>();
+            ((App)Application.Current).NavigateTo(l => new TrainerSelection(l));
+        }
+
+        private async void Confirm_Click(object sender, RoutedEventArgs e)
+        {
+            if (TrainerName.Text == ""|| TrainerName.Text == "Name cant be empty")
+            {
+                TrainerName.Text = "Name cant be empty";
+            }
+            else
+            {
+                Trainer t = new Trainer { Gender = trainerGender, Name = TrainerName.Text };
+                dbContext.Trainers.Add(t);
+                await dbContext.SaveChangesAsync();
+                ((App)Application.Current).NavigateTo(l => new TrainerSelection(l));
+            }
         }
     }
 }

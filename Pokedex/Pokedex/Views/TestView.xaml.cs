@@ -24,11 +24,10 @@ namespace Pokedex.Views
     {
         private readonly IPokeAPIClient _PokeAPIClient;
         private DatabaseContext dbContext;
-
-        public TestView(IPokeAPIClient pokeAPIClient, DatabaseContext dbContext)
+        public TestView(ViewsDependancy dependency)
         {
-            this.dbContext = dbContext;
-            _PokeAPIClient = pokeAPIClient;
+            dbContext = dependency.dbContext;
+            _PokeAPIClient = dependency.pokeAPIClient;
             InitializeComponent();
             GetTrainers();
         }
@@ -45,10 +44,15 @@ namespace Pokedex.Views
             NamedAPIResource<Language> langEn = new NamedAPIResource<Language> { Name = "en", Url = "https://pokeapi.co/api/v2/language/9/" };
             Language en = await _PokeAPIClient.FetchResource(langEn);
             LabelEn.Content = en.Name;
+
+            NamedAPIResource<Pokemon> SpeciesBulba = new NamedAPIResource<Pokemon> { Name = "bulbasaur", Url = "https://pokeapi.co/api/v2/pokemon/1" };
+            Pokemon bulbasaur = await _PokeAPIClient.FetchResource(SpeciesBulba);
+
         }
         private void HomePageClick(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).NavigateTo<HomeView>();
+            ((App)Application.Current).NavigateTo(l => new HomeView(l));
+
         }
     }
 }
