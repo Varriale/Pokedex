@@ -31,4 +31,8 @@
     <Resource Include="Resources\Spr_FRLG_Red.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Themes\" />
+  </ItemGroup>
+
 </Project>

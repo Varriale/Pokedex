@@ -11,10 +11,12 @@ namespace Pokedex.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public Color Color { get { return GetColor();}}
 
         public Color GetColor()
         {
             Color typeColor;
+            typeColor.A = 255;
             switch (Id)
             {
                 case 1://Normal

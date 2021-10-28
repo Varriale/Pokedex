@@ -45,8 +45,8 @@ namespace Pokedex.Views
             Language en = await _PokeAPIClient.FetchResource(langEn);
             LabelEn.Content = en.Name;
 
-            NamedAPIResource<Pokemon> SpeciesBulba = new NamedAPIResource<Pokemon> { Name = "bulbasaur", Url = "https://pokeapi.co/api/v2/pokemon/1" };
-            Pokemon bulbasaur = await _PokeAPIClient.FetchResource(SpeciesBulba);
+            NamedAPIResource<PokemonApiModel> SpeciesBulba = new NamedAPIResource<PokemonApiModel> { Name = "bulbasaur", Url = "https://pokeapi.co/api/v2/pokemon/1" };
+            PokemonApiModel bulbasaur = await _PokeAPIClient.FetchResource(SpeciesBulba);
 
         }
         private void HomePageClick(object sender, RoutedEventArgs e)

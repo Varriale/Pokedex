@@ -9,6 +9,6 @@ namespace Pokedex.Entities
     public class PokemonSpeciesVariety
     {
         public bool Is_Default { get; set; }
-        public NamedAPIResource<Pokemon> Pokemon { get; set; }
+        public NamedAPIResource<PokemonApiModel> Pokemon { get; set; }
     }
 }

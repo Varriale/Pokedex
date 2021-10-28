@@ -19,5 +19,15 @@ namespace Pokedex.Entities
         public NamedAPIResource<EvolutionChain> Evolution_Chain { get; set; }
         public List<PokemonSpeciesVariety> Varieties { get; set; }
         public List<Name> Names { get; set; }
+
+        public Pokemon defaultVariety { get; set; }
+
+        public string enName
+        {
+            get
+            {
+                return Names.FirstOrDefault(n => n.Language.Name == "en")?.name??Name;
+            }
+        }
     }
 }

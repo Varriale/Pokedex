@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Pokedex"
              Startup="OnStartup">
-    <Application.Resources>         
+    <Application.Resources>
+        <ResourceDictionary Source="Templates\PokedexButton.xaml"/>
     </Application.Resources>
 </Application>

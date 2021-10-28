@@ -23,6 +23,7 @@ namespace Pokedex
     {
         public IServiceProvider serviceProvider;
         public Trainer CurrentTrainer { get; private set; }
+        public Page LastPage { get; set; }
         public App()
         {
             ServiceCollection services = new ServiceCollection();
@@ -52,8 +53,21 @@ namespace Pokedex
         public void NavigateTo<T>(Func<ViewsDependancy,T> del) where T:Page
         {
             var mainWindow = serviceProvider.GetService<MainWindow>();
+            LastPage = (Page)mainWindow.MainFrame.Content;
             mainWindow.MainFrame.Navigate(del(serviceProvider.GetService<ViewsDependancy>()));
             mainWindow.Show();
+        }
+
+        public void NavigateBack()
+        {
+            if (LastPage != null)
+            {
+                var mainWindow = serviceProvider.GetService<MainWindow>();
+                var newLastPage = (Page)mainWindow.MainFrame.Content;
+                mainWindow.MainFrame.Navigate(LastPage);
+                LastPage = newLastPage;
+                mainWindow.Show();
+            }            
         }
 
         public void SetTrainer(Trainer trainer)

@@ -14,7 +14,7 @@ namespace Pokedex.Entities
         public bool Is_Battle_Only { get; set; }
         public bool Is_Mega { get; set; }
         public string Form_Name { get; set; }
-        public NamedAPIResource<Pokemon> Pokemon { get; set; }
+        public NamedAPIResource<PokemonApiModel> Pokemon { get; set; }
         public List<NamedAPIResource<PokemonType>> Types { get; set; }
         public List<Name> Names { get; set; }
         public PokemonSprites Sprites { get; set; }

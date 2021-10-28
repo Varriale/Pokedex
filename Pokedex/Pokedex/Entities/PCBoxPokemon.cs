@@ -2,7 +2,7 @@
 
 namespace Pokedex.Entities
 {
-    public class PCBoxPokemon:NamedAPIResource<Pokemon>
+    public class PCBoxPokemon:NamedAPIResource<PokemonApiModel>
     {
         [Key]
         public long Id { get; set; }
