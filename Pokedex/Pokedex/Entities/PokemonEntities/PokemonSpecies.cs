@@ -15,7 +15,7 @@ namespace Pokedex.Entities
         public bool Is_Legendary { get; set; }
         public bool Is_Mythical { get; set; }
         public bool Has_Gender_differences { get; set; }
-        public NamedAPIResource<PokemonSprites> Evolves_From_Species { get; set; }
+        public NamedAPIResource<PokemonSpecies> Evolves_From_Species { get; set; }
         public NamedAPIResource<EvolutionChain> Evolution_Chain { get; set; }
         public List<PokemonSpeciesVariety> Varieties { get; set; }
         public List<Name> Names { get; set; }

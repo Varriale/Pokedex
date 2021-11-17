@@ -9,18 +9,75 @@
       Title="Menu">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Button Grid.Row ="0" Grid.Column="0" Margin ="10" Content="National Pokédex" Click="Button_Click"/>
-        <Button Grid.Row ="0" Grid.Column="1" Margin ="10" Content="Search"/>
-        <Button Grid.Row ="1" Grid.Column="0" Margin ="10" Content="PCBox"/>
-        <Button Grid.Row ="1" Grid.Column="1" Margin ="10" Content="Tall Grass"/>
 
+        <Grid Panel.ZIndex="0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Style.Setters>
+                        <Setter Property="Background" Value="AliceBlue"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect/>
+                            </Setter.Value>
+                        </Setter>
+                    </Style.Setters>
+                </Style>
+            </Grid.Resources>
+            <Button Grid.Row ="0" Grid.Column="0" Margin ="10" Click="NatDex_Click">
+                <StackPanel>
+                    <Image Source="pack://application:,,,/Resources/pokedex-icon.png" Height="100"/>
+                    <TextBlock Text="National Dex" FontSize="36"/>
+                </StackPanel>
+            </Button>
+            <Button Grid.Row ="0" Grid.Column="1" Margin ="10" >
+                <StackPanel>
+                    <Image Source="pack://application:,,,/Resources/whosThatPokemon-Icon.png" Height="100"/>
+                    <TextBlock Text="Who's That Pokemon?" FontSize="36"/>
+                </StackPanel>
+            </Button>
+            <Button Grid.Row ="1" Grid.Column="0" Margin ="10">
+                <StackPanel>
+                    <Image Source="pack://application:,,,/Resources/pcBox-Icon.png" Height="100"/>
+                    <TextBlock Text="PC Box" FontSize="36"/>
+                </StackPanel>
+            </Button>
+            <Button Grid.Row ="1" Grid.Column="1" Margin ="10" Click="TallGrass_Click">
+                <StackPanel>
+                    <Image Source="pack://application:,,,/Resources/grass_icon.png" Height="100"/>
+                    <TextBlock Text="Tall Grass" FontSize="36"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+        <Grid x:Name="AnimationGrid" Panel.ZIndex="-1">
+            <Grid x:Name="AnimationSquaresGrid">
+            </Grid>
+            <Canvas Grid.ZIndex="2">
+                <Image x:Name="TallGrass1" Source="pack://application:,,,/Resources/tallGrass2.png" Canvas.Right="-1024" Canvas.Bottom="0" Width="1024" Height="347"/>
+                <Image x:Name="TallGrass2" Source="pack://application:,,,/Resources/tallGrass2.png" Canvas.Left="-1024" Canvas.Bottom="0" Width="1024" Height="347">
+                    <Image.RenderTransform>
+                        <ScaleTransform ScaleX="-1" CenterX="512"/>
+                    </Image.RenderTransform>
+                </Image>
+            </Canvas>
+            <Grid Grid.ZIndex="3" Margin="-125" Opacity="0.75">
+                <Grid.Background>
+                    <RadialGradientBrush x:Name="FadeWhite">
+                        <RadialGradientBrush.GradientStops>
+                            <GradientStop x:Name="FadeWhiteStop2" Color="White" Offset="0"/>
+                            <GradientStop x:Name="FadeWhiteStop1" Color="Transparent" Offset="0"/>
+                        </RadialGradientBrush.GradientStops>
+                    </RadialGradientBrush>
+                </Grid.Background>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

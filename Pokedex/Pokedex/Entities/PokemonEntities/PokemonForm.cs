@@ -15,9 +15,27 @@ namespace Pokedex.Entities
         public bool Is_Mega { get; set; }
         public string Form_Name { get; set; }
         public NamedAPIResource<PokemonApiModel> Pokemon { get; set; }
-        public List<NamedAPIResource<PokemonType>> Types { get; set; }
+        public List<PokemonType> Types { get; set; }
         public List<Name> Names { get; set; }
         public PokemonSprites Sprites { get; set; }
+        public string enName
+        {
+            get
+            {
+                return Names.FirstOrDefault(n => n.Language.Name == "en")?.name ?? Name;
+            }
+        }
+
+        public string OfficialArtworkOrDefault
+        {
+            get
+            {
+                if (Sprites.Other != null && Sprites.Other.ContainsKey("official-artwork"))
+                    return Sprites.Other["official-artwork"].Front_Default;
+                else
+                    return Sprites.Front_Default;
+            }
+        }
 
     }
 }

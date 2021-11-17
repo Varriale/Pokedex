@@ -42,13 +42,15 @@ namespace Pokedex.Views
             this.DataContext = this;
             _PokeAPIClient = dependency.pokeAPIClient;
             GetSpecies();
+            PageSelect.SelectedIndex = 0;
         }
 
         private async void GetSpecies(string uri = null)
         {
             PaginatedResource<PokemonSpecies> pr = await _PokeAPIClient.FetchPaginatedResource<PokemonSpecies>(uri ?? "https://pokeapi.co/api/v2/pokemon-species");
             species[0] = pr;
-            //Btn2.Content = species[0].Results[0].Name;
+            PageSelect.ItemsSource = Enumerable.Range(1, species[0].totalPages).ToArray();
+            PageSelect.SelectedIndex = species[0].page - 1;
             List<PokemonSpecies> pkmSpecies = await _PokeAPIClient.FetchListResource(species[0].Results);
             pokemons[0] = await _PokeAPIClient.FetchListPokemonFromPokemonApiModel(await _PokeAPIClient.FetchListResource(pkmSpecies.Select(q => q.Varieties.Where(v => v.Is_Default).First().Pokemon).ToList()));
             for (int i = 0; i < pkmSpecies.Count; i++)
@@ -64,7 +66,7 @@ namespace Pokedex.Views
         }
         private void Menu_Btn_Click(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).NavigateBack();
+            ((App)Application.Current).NavigateTo(l => new Menu(l));
         }
         private void Prev_Btn_Click(object sender, RoutedEventArgs e)
         {
@@ -73,7 +75,13 @@ namespace Pokedex.Views
 
         public void GoToPokemonPage(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).NavigateTo(l => new PokemonInfoView(l, (PokemonSpecies)((Button)sender).Tag));
+            if((PokemonSpecies)((Button)sender).Tag!=null)
+                ((App)Application.Current).NavigateTo(l => new PokemonInfoView(l, (PokemonSpecies)((Button)sender).Tag));
+        }
+
+        private void PageSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            GetSpecies(species[0].GetLinkToPage((int)((ComboBox)sender).SelectedValue));
         }
     }
 }

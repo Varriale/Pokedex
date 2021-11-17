@@ -8,7 +8,99 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PokemonInfoView">
 
-    <Grid>
-        <TextBlock Text="{Binding Path=_PokemonSpecies[0].Name, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+    <Grid Background="{Binding Path=_PokemonSpecies[0].defaultVariety.TypesBrush, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="12,0,0,0" >
+            <StackPanel Orientation="Vertical">
+                <Button Margin="5" Padding="5,2,5,2" Click="Button_Click" HorizontalAlignment="Left" Background="White" BorderBrush="Transparent">Back</Button>
+                <StackPanel Orientation="Horizontal">
+                    <Grid Margin="0,0,30,0">
+                        <Rectangle Height="200" Width="200">
+                            <Rectangle.Fill>
+                                <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                                    <RadialGradientBrush.GradientStops>
+                                        <GradientStop Color="White" Offset="0.5" />
+                                        <GradientStop Color="Transparent" Offset="1.0" />
+                                    </RadialGradientBrush.GradientStops>
+                                </RadialGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Image Source="{Binding Path=_PokemonSpecies[0].defaultVariety.OfficialArtworkOrDefault, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Height="200"/>
+                    </Grid>
+
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center" Text="#" FontSize="30" />
+                            <TextBlock VerticalAlignment="Center" FontSize="30" Text="{Binding Path=_PokemonSpecies[0].Id, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock VerticalAlignment="Center" FontSize="60" Text="{Binding Path=_PokemonSpecies[0].enName, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            <StackPanel x:Name="Types" Margin="30,0" Orientation="Vertical" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <WrapPanel  x:Name="PkmTags" Orientation="Horizontal"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="center" Text="Height: " FontSize="20" FontWeight="Bold" />
+                            <TextBlock VerticalAlignment="center" Text="{Binding Path=_PokemonSpecies[0].defaultVariety.HeightStr, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" FontSize="20"/>
+                            <TextBlock VerticalAlignment="center" Text="      " FontSize="20"/>
+                            <TextBlock VerticalAlignment="center" Text="Weight: " FontSize="20" FontWeight="Bold" />
+                            <TextBlock VerticalAlignment="center" Text="{Binding Path=_PokemonSpecies[0].defaultVariety.WeightStr, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" FontSize="20"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" x:Name="GenderGrid" Visibility="Collapsed">
+                    <TextBlock Text="Gender Difference:" FontSize="24"/>
+                    <StackPanel x:Name="GenderDiff" Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel.Background>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,0.3">
+                                    <LinearGradientBrush.GradientStops>
+                                        <GradientStop Color="DeepSkyBlue" Offset="0"/>
+                                        <GradientStop Color="Transparent" Offset="1"/>
+                                    </LinearGradientBrush.GradientStops>
+                                </LinearGradientBrush>
+                            </StackPanel.Background>
+                            <TextBlock Text="Male" HorizontalAlignment="Center" FontSize="24"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Path=_PokemonSpecies[0].defaultVariety.Sprites.Front_Default, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Height="200"/>
+                                <Image Source="{Binding Path=_PokemonSpecies[0].defaultVariety.Sprites.Back_Default, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Height="200"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel.Background>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,0.3">
+                                    <LinearGradientBrush.GradientStops>
+                                        <GradientStop Color="LightPink" Offset="0"/>
+                                        <GradientStop Color="Transparent" Offset="1"/>
+                                    </LinearGradientBrush.GradientStops>
+                                </LinearGradientBrush>
+                            </StackPanel.Background>
+                            <TextBlock Text="Female" HorizontalAlignment="Center" FontSize="24"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Path=_PokemonSpecies[0].defaultVariety.Sprites.Front_Female, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Height="200"/>
+                                <Image Source="{Binding Path=_PokemonSpecies[0].defaultVariety.Sprites.Back_Female, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Height="200"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" x:Name="VarietiesGrid" Visibility="Collapsed">
+                    <TextBlock Text="Varieties:" FontSize="24"/>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                        <StackPanel x:Name="VarietiesSP" Orientation="Horizontal"/>
+                    </ScrollViewer>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" x:Name="FormsGrid" Visibility="Collapsed">
+                    <TextBlock Text="Forms:" FontSize="24"/>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                        <StackPanel x:Name="FormsSP" Orientation="Horizontal"/>
+                    </ScrollViewer>
+                </StackPanel>
+
+            <StackPanel x:Name="EvolutionSP" Orientation="Vertical">
+                <TextBlock Text="Evolution Chain:" FontSize="24"/>
+                    <TreeView x:Name="EvolutionTV" Background="Transparent" BorderBrush="Transparent" Foreground="Red" VerticalContentAlignment="Top">
+                    </TreeView>
+            </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

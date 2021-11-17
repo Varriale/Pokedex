@@ -9,11 +9,16 @@
   <ItemGroup>
     <None Remove="Resources\132.png" />
     <None Remove="Resources\die.png" />
+    <None Remove="Resources\grass_icon.png" />
+    <None Remove="Resources\pcBox-Icon.png" />
+    <None Remove="Resources\pokedex-icon.png" />
     <None Remove="Resources\Spr_FRLG_Leaf.png" />
     <None Remove="Resources\Spr_FRLG_Leaf.webp" />
     <None Remove="Resources\Spr_FRLG_Oak.png" />
     <None Remove="Resources\Spr_FRLG_Red.png" />
     <None Remove="Resources\Spr_FRLG_Red.webp" />
+    <None Remove="Resources\tallGrass2.png" />
+    <None Remove="Resources\whosThatPokemon-Icon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,9 +31,14 @@
   <ItemGroup>
     <Resource Include="Resources\132.png" />
     <Resource Include="Resources\die.png" />
+    <Resource Include="Resources\grass_icon.png" />
+    <Resource Include="Resources\pcBox-Icon.png" />
+    <Resource Include="Resources\pokedex-icon.png" />
     <Resource Include="Resources\Spr_FRLG_Leaf.png" />
     <Resource Include="Resources\Spr_FRLG_Oak.png" />
     <Resource Include="Resources\Spr_FRLG_Red.png" />
+    <Resource Include="Resources\tallGrass2.png" />
+    <Resource Include="Resources\whosThatPokemon-Icon.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -18,6 +18,18 @@ namespace Pokedex.Entities
         public PokemonSprites Sprites { get; set; }
         public NamedAPIResource<PokemonSpecies> Species { get; set; }
         public List<Pokedex.Entities.Type> Types { get; set; }
+        public string HeightStr { get
+            {
+                return (Height / 10.0).ToString() + " m";
+            }
+        }
+        public string WeightStr
+        {
+            get
+            {
+                return (Weight / 10.0).ToString() + " kg";
+            }
+        }
 
         public LinearGradientBrush TypesBrush { get
             {
@@ -33,7 +45,7 @@ namespace Pokedex.Entities
         {
             get
             {
-                if (Sprites.Other.ContainsKey("official-artwork"))
+                if (Sprites.Other != null && Sprites.Other.ContainsKey("official-artwork"))
                     return Sprites.Other["official-artwork"].Front_Default;
                 else
                     return Sprites.Front_Default;

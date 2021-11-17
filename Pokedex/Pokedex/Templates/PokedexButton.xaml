@@ -1,25 +1,38 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<ResourceDictionary x:Class="Pokedex.Templates.PokedexButton"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:extensions="clr-namespace:Pokedex.Templates">
 
     <Style x:Key="PokemonSpeciesButton" TargetType="Button">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Grid Margin="5,0,5,0" >
-                        <Grid.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="Black"/>
-                                <Setter Property="FontSize" Value="20"/>
-                            </Style>
-                        </Grid.Resources>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-                            <TextBlock  Text="#"/>
-                            <TextBlock  Text="{Binding Path=(extensions:Extensions.Pokemon).Order, RelativeSource={RelativeSource Self}}"/>
-                        </StackPanel>
-                        <Image Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Source ="{Binding Path=(extensions:Extensions.Pokemon).Sprites.Front_Default, RelativeSource={RelativeSource Self}}"/>
-                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Bottom" Text="{Binding Path=(extensions:Extensions.PokemonSpecies).enName, RelativeSource={RelativeSource Self}}"/>
-                    </Grid>
+                    <Grid Background="{Binding Tag.defaultVariety.TypesBrush, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button }},UpdateSourceTrigger=PropertyChanged}">
+                            <Grid.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Setter Property="FontSize" Value="20"/>
+                                </Style>
+                            </Grid.Resources>
+
+                            <StackPanel Orientation="Horizontal" >
+                                <TextBlock  Text="#"/>
+                                <TextBlock  Text="{Binding Tag.Id, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button }},UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBlock  Text="                                                                                 "/>
+                            </StackPanel>
+                            <Image Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding Tag.defaultVariety.Sprites.Front_Default, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button }},UpdateSourceTrigger=PropertyChanged}"/>
+                            <Rectangle Margin="-3">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush Opacity="1" StartPoint="0.5,0.5" EndPoint="0.5,1">
+                                        <GradientStop Color="White" Offset="1"/>
+                                        <GradientStop Color="Transparent" Offset="0"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Bottom" Text="{Binding Tag.enName, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button }},UpdateSourceTrigger=PropertyChanged}"/>
+                        </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

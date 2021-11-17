@@ -50,12 +50,13 @@ namespace Pokedex
             mainWindow.MainFrame.Content = serviceProvider.GetService<TrainerSelection>();
             mainWindow.Show();
         }
-        public void NavigateTo<T>(Func<ViewsDependancy,T> del) where T:Page
+        public void NavigateTo<T>(Func<ViewsDependancy,T> del, Action resetBehaviour=null) where T:Page
         {
             var mainWindow = serviceProvider.GetService<MainWindow>();
             LastPage = (Page)mainWindow.MainFrame.Content;
             mainWindow.MainFrame.Navigate(del(serviceProvider.GetService<ViewsDependancy>()));
             mainWindow.Show();
+            mainWindow.MainFrame.Navigated += (_,_)=> { if(resetBehaviour!=null) resetBehaviour(); };
         }
 
         public void NavigateBack()

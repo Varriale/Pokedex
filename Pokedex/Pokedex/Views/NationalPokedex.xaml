@@ -2,9 +2,7 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Pokedex.Views"
-      xmlns:extensions="clr-namespace:Pokedex.Templates"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="NationalPokedex">
@@ -28,45 +26,55 @@
         <Button x:Name="Prev_Btn" Grid.Row="4" Grid.Column="1" Margin="5" Content="Previous Page" Click="Prev_Btn_Click"/>
         <Button x:Name="Next_Btn" Grid.Row="4" Grid.Column="3" Margin="5" Content="Next Page" Click="Next_Btn_Click" />
         <Button x:Name="Menu_Btn" Grid.Row="4" Grid.Column="0" Margin="5" Content="Menu" Click="Menu_Btn_Click"/>
+        <ComboBox x:Name="PageSelect" Grid.Row="4" Grid.Column="2" Margin="5" Width="50" SelectionChanged="PageSelect_SelectionChanged"/>
 
         <!-- Pokemon Species Buttons-->
         <!--Button Grid.Row="0" Grid.Column="0" Margin="5" extensions:Extensions.Pokemon="{Binding Path=pokemons[0][0], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource PokemonSpeciesButton}"/-->
-        <Button Grid.Row="0" Grid.Column="0" Margin="5" BorderThickness="0" Tag="{Binding Path=pokemonSpecies[0][0], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Background="{Binding Tag.defaultVariety.TypesBrush, RelativeSource={RelativeSource Mode=Self}}" Click="GoToPokemonPage">
-            <Grid Margin="10,0,10,0" >
+        <Button Grid.Row="0" Grid.Column="0" Tag="{Binding Path=pokemonSpecies[0][0], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="0" Grid.Column="1" Tag="{Binding Path=pokemonSpecies[0][1], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="0" Grid.Column="2" Tag="{Binding Path=pokemonSpecies[0][2], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="0" Grid.Column="3" Tag="{Binding Path=pokemonSpecies[0][3], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="0" Grid.Column="4" Tag="{Binding Path=pokemonSpecies[0][4], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="1" Grid.Column="0" Tag="{Binding Path=pokemonSpecies[0][5], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="1" Grid.Column="1" Tag="{Binding Path=pokemonSpecies[0][6], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="1" Grid.Column="2" Tag="{Binding Path=pokemonSpecies[0][7], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="1" Grid.Column="3" Tag="{Binding Path=pokemonSpecies[0][8], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="1" Grid.Column="4" Tag="{Binding Path=pokemonSpecies[0][9], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="2" Grid.Column="0" Tag="{Binding Path=pokemonSpecies[0][10], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="2" Grid.Column="1" Tag="{Binding Path=pokemonSpecies[0][11], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="2" Grid.Column="2" Tag="{Binding Path=pokemonSpecies[0][12], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="2" Grid.Column="3" Tag="{Binding Path=pokemonSpecies[0][13], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="2" Grid.Column="4" Tag="{Binding Path=pokemonSpecies[0][14], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="3" Grid.Column="0" Tag="{Binding Path=pokemonSpecies[0][15], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="3" Grid.Column="1" Tag="{Binding Path=pokemonSpecies[0][16], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="3" Grid.Column="2" Tag="{Binding Path=pokemonSpecies[0][17], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="3" Grid.Column="3" Tag="{Binding Path=pokemonSpecies[0][18], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <Button Grid.Row="3" Grid.Column="4" Tag="{Binding Path=pokemonSpecies[0][19], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PokemonSpeciesButton}" Click="GoToPokemonPage"/>
+        <!--Button Grid.Row="0" Grid.Column="0" Margin="5" BorderThickness="0" Tag="{Binding Path=pokemonSpecies[0][0], Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Background="{Binding Tag.defaultVariety.TypesBrush, RelativeSource={RelativeSource Mode=Self}}" Click="GoToPokemonPage">
+            <Grid >
                 <Grid.Resources>
                     <Style TargetType="TextBlock">
                         <Setter Property="Foreground" Value="Black"/>
                         <Setter Property="FontSize" Value="20"/>
                     </Style>
                 </Grid.Resources>
+
                 <StackPanel Orientation="Horizontal" >
-                        <TextBlock  Text="#"/>
-                    <TextBlock  Text="{Binding Tag.Order, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button }},UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock  Text="                                                                                 "/>
-                    </StackPanel>
+                    <TextBlock  Text="#"/>
+                    <TextBlock  Text="{Binding Tag.Id, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button }},UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock  Text="                                                                                 "/>
+                </StackPanel>
                 <Image Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding Tag.defaultVariety.Sprites.Front_Default, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button }},UpdateSourceTrigger=PropertyChanged}"/>
+                <Rectangle Margin="-3">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush Opacity="1" StartPoint="0.5,0.5" EndPoint="0.5,1">
+                            <GradientStop Color="White" Offset="1"/>
+                            <GradientStop Color="Transparent" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Bottom" Text="{Binding Tag.enName, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button }},UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
-        </Button>
-        <Button Grid.Row="0" Grid.Column="1" Margin="5" BorderThickness="0" Background="{Binding Path=pokemons[0][1].TypesBrush, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}">
-            <Grid Margin="5,0,5,0" >
-                <Grid.Resources>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="Foreground" Value="Black"/>
-                        <Setter Property="FontSize" Value="20"/>
-                    </Style>
-                </Grid.Resources>
-
-                <Button HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" >
-                    <StackPanel Orientation="Horizontal" >
-                        <TextBlock  Text="#"/>
-                        <TextBlock  Text="{Binding Path=pokemons[0][1].Order, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
-                    </StackPanel>
-                </Button>
-                <Image Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding Path=pokemons[0][1].Sprites.Front_Default, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Bottom" Text="{Binding Path=pokemonSpecies[0][1].enName, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
-            </Grid>
-        </Button>
-
+        </Button-->
     </Grid>
 </Page>

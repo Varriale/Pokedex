@@ -97,6 +97,17 @@ namespace Pokedex.Services
             
         }
 
+        public async Task<PokemonSpecies> FetchSpeciesByNumber(int numb)
+        {
+            PokemonSpecies resource = default(PokemonSpecies);
+            HttpResponseMessage response = await client.GetAsync(_baseUri+"pokemon-species/"+numb.ToString());
+            if (response.IsSuccessStatusCode)
+            {
+                resource = await response.Content.ReadAsAsync<PokemonSpecies>();
+            }
+            return resource;
+        }
+
         //Add the GetPokemon/SearchPokemon/GetPage ou coisa assim
 
     }

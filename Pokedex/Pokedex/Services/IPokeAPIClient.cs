@@ -12,5 +12,6 @@ namespace Pokedex.Services
         Task<Pokemon> FetchPokemonFromPokemonApiModel(PokemonApiModel pkmModel);
         Task<List<Pokemon>> FetchListPokemonFromPokemonApiModel(List<PokemonApiModel> pkmModels);
         Entities.Type TypeFromName(string name);
+        Task<PokemonSpecies> FetchSpeciesByNumber(int numb);
     }
 }
