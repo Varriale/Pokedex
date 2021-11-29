@@ -11,6 +11,7 @@
     <None Remove="Resources\die.png" />
     <None Remove="Resources\grass_icon.png" />
     <None Remove="Resources\pcBox-Icon.png" />
+    <None Remove="Resources\pokeball-icon.png" />
     <None Remove="Resources\pokedex-icon.png" />
     <None Remove="Resources\Spr_FRLG_Leaf.png" />
     <None Remove="Resources\Spr_FRLG_Leaf.webp" />
@@ -33,6 +34,7 @@
     <Resource Include="Resources\die.png" />
     <Resource Include="Resources\grass_icon.png" />
     <Resource Include="Resources\pcBox-Icon.png" />
+    <Resource Include="Resources\pokeball-icon.png" />
     <Resource Include="Resources\pokedex-icon.png" />
     <Resource Include="Resources\Spr_FRLG_Leaf.png" />
     <Resource Include="Resources\Spr_FRLG_Oak.png" />

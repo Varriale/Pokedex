@@ -5,9 +5,94 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pokedex"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    
-    <Grid>
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Content=""/>
-    </Grid>
+        Icon="pack://application:,,,/Resources/pokeball-icon.png"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        Title="MainWindow" Height="450" Width="1200">
+    <!-- -->
+    <DockPanel>
+        <DockPanel.RenderTransform>
+            <RotateTransform x:Name="RottTransform" Angle="-90" CenterX="600" CenterY="225"/>
+        </DockPanel.RenderTransform>
+        <Grid x:Name="PkballWhite" DockPanel.Dock="Left" Panel.ZIndex="2" Margin="375,0,0,0" MouseLeftButtonDown="Pkball_MouseLeftButtonDown">
+            
+            <Path Stroke="Black" StrokeThickness="1" Stretch="Uniform">
+                <Path.Fill>
+                    <RadialGradientBrush GradientOrigin="1,0.5" Center="1,0.5" RadiusX="1" RadiusY="1">
+                        <GradientStop Color="#FFF0F0F0" Offset="0.5" />
+                        <GradientStop Color="#FFDEDBDA" Offset="1.0" />
+                    </RadialGradientBrush>
+                </Path.Fill>
+                <Path.Data>
+                    <PathGeometry>
+                        <PathGeometry.Figures>
+                            <PathFigure StartPoint="50,0">
+                                <PathFigure.Segments>
+                                    <ArcSegment Size="50,50" RotationAngle="10" IsLargeArc="True" SweepDirection="Counterclockwise" Point="50,100"/>
+                                    <LineSegment Point="50,0"></LineSegment>
+                                </PathFigure.Segments>
+                            </PathFigure >
+                        </PathGeometry.Figures>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+            
+            
+            <Button x:Name="Botao" Width="100" Height="100" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,-50,0" Click="Button_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Ellipse Stroke="Black"
+                         StrokeThickness="1">
+                                <Ellipse.Fill>
+                                    <RadialGradientBrush>
+                                        <GradientStop Offset="0.85"
+                                          Color="LightGray" />
+                                        <GradientStop Offset="1"
+                                          Color="Gray" />
+                                    </RadialGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="1"/>
+                </Button.Effect>
+            </Button>
+        </Grid>
+        <Grid x:Name="PkballRed" DockPanel.Dock="Right" Panel.ZIndex="1" Margin="0,0,375,0" MouseLeftButtonDown="Pkball_MouseLeftButtonDown">
+            <Path Stroke="Black" StrokeThickness="1" Stretch="Uniform">
+                <Path.Fill>
+                    <RadialGradientBrush GradientOrigin="0,0.5" Center="0,0.5" RadiusX="1" RadiusY="1">
+                        <GradientStop Color="#FFEB5D4E" Offset="0.5" />
+                        <GradientStop Color="#FFD9382C" Offset="1.0" />
+                    </RadialGradientBrush>
+                </Path.Fill>
+                <Path.Data>
+                    <PathGeometry>
+                        <PathGeometry.Figures>
+                            <PathFigure StartPoint="-450,0">
+                                <PathFigure.Segments>
+                                    <ArcSegment Size="450,450" IsLargeArc="True" SweepDirection="Clockwise" Point="-450,900"/>
+                                    <!--LineSegment Point="-450,550"></LineSegment>
+                                    <ArcSegment Size="100,100" IsLargeArc="False" SweepDirection="Counterclockwise" Point="-450,350" /-->
+                                    <LineSegment Point="-450,0"></LineSegment>
+                                </PathFigure.Segments>
+                            </PathFigure >
+                        </PathGeometry.Figures>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+        </Grid>
+        
+        <Grid Margin="0,10,0,10">
+            <Canvas Background="White" Opacity="0.85"/>
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Content="" ClipToBounds="True"/>
+            <Canvas Background="LightSkyBlue" Opacity="0.15" IsHitTestVisible="False"/>
+        </Grid>
+        
+        
+    </DockPanel>
 </Window>
